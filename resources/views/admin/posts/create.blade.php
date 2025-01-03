@@ -15,17 +15,16 @@
         </ul>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-    <form action="/admin/posts" method="POST" role="form">
+    <form action="{{route('admin.posts.store')}}" method="POST" role="form">
         @method('POST')
         @csrf
-        <div class="form-group">
-            <label for="title" class="form-label">標題：</label>
-            <input id="title" name="title" class="form-control" value="{{ old('title') }}" placeholder="請
-            輸入文章標題">
-            …
-            <label for="content" class="form-label">內容：</label>
-            <textarea id="content" name="content" class="form-control" rows="10"> {{ old('content') }}
-            </textarea>
+        <div class="form-gruop">
+            <label for="title" class="form-label">標題</label>
+            <input id="title" name="title" class="form-control" value="{{ old('title') }}" placeholder="請輸入文章標題">
+        </div>
+        <div class="mb-3">
+            <label for="content" class="form-label">內容</label>
+            <textarea id="content" name="content" class="form-control" rows="10"> {{ old('content') }}</textarea>
         </div>
         <div class="form-group">
             <label for=" is_feature " class="form-label">精選？</label>
@@ -35,7 +34,7 @@
             </select>
         </div>
         <div class="text-right">
-            …
+            <a class="btn btn-primary btn-sm" href="#">儲存</a>
         </div>
     </form>
 </div>
