@@ -36,3 +36,11 @@ class AdminPostsController extends Controller
         //
     }
 }
+
+use App\Models\Post
+public function index()
+{
+$posts = Post::orderBy('created_at', 'DESC')‐>get();
+$data = ['posts' => $posts];
+return view('admin.posts.index', $data);
+}
