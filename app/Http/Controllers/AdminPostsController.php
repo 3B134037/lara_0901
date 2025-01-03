@@ -39,9 +39,10 @@ class AdminPostsController extends Controller
         return redirect()->route('admin.post.index');
     }
 
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post ->delete();
+        return redirect()->route('admin.post.index');
     }
 }
 
