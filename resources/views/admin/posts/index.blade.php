@@ -19,27 +19,28 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col"style="text-align:left">標題</th>
-            <th scope="col"style="text-align:right">精選?</th>
+            <th scope="col" style="text-align:left">標題</th>
+            <th scope="col" style="text-align:right">精選?</th>
             <th scope="col">功能</th>
         </tr>
         </thead>
         <tbody>
         @foreach($posts as $post)
-        <tr>
-            <td style="text-align:right">{{ $post->id }}</td>
-            <td>{{ $post->title }}</td>
-            <td>{{ ($post->is_feature)? 'v' : 'x' }}</td>
-            <td>
-                <a class="btn btn-primary btn-sm" href="{{ route('admin.posts.edit', $post->id) }}">編輯</a>
-                /
-                <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST" style="display:inline-block">
-                    @method('DELETE')
-                    @csrf
-                    <button class="btn btn-sm btn-danger" type="submit">刪除</button>
-                </form>
-            </td>
-        </tr>
+            <tr>
+                <td style="text-align:right">
+                    {{ $post->id }}</td>
+                <td>{{ $post->title }}</td>
+                <td>{{ ($post->is_feature)? 'v' : 'x' }}</td>
+                <td>
+                    <a class="btn btn-sm btn-primary" href="{{ route('admin.posts.edit', $post->id) }}">編輯</a>
+
+                    <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST" style="display:inline-block">
+                        @method('DELETE')
+                        @csrf
+                        <button class="btn btn-sm btn-danger" type="submit">刪除</button>
+                    </form>
+                </td>
+            </tr>
         @endforeach
         </tbody>
     </table>

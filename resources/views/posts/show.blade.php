@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('page-title', 'Blog Post')
+@section('title', 'post->title')
 
 @section('page-style')
     <!-- Core theme CSS (includes Bootstrap)-->

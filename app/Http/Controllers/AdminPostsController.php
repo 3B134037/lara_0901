@@ -9,7 +9,7 @@ class AdminPostsController extends Controller
 {
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'DESC') ->get();
+        $posts = Post::orderBy('created_at', 'DESC')->get();
         $data = ['posts' => $posts];
         return view('admin.posts.index', $data);
     }
@@ -21,8 +21,8 @@ class AdminPostsController extends Controller
 
     public function store(Request $request)
     {
-        Post::create($request ->all());
-        return redirect() ->route('admin.posts.index');
+        Post::create($request->all());
+        return redirect()->route('admin.posts.index');
     }
 
     public function edit(Post $post)
@@ -30,19 +30,21 @@ class AdminPostsController extends Controller
         $data = [
             'post' => $post,
         ];
-        return view('admin.posts.edit',$data);
+
+        return view('admin.posts.edit', $data);
     }
 
     public function update(Request $request, Post $post)
     {
-        $post ->update($request->all());
-        return redirect()->route('admin.post.index');
+        $post->update($request->all());
+
+        return redirect()->route('admin.posts.index');
     }
 
     public function destroy(Post $post)
     {
-        $post ->delete();
-        return redirect()->route('admin.post.index');
+        $post->delete();
+        return redirect()->route('admin.posts.index');
     }
 }
 
